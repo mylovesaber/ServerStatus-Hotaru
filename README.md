@@ -7,7 +7,12 @@ Test v0.014：图片来源：Pixiv：72725286
 
 ## 特性
 
-模板来自：<https://www.hostloc.com/thread-494384-1-1.html>
+模板来自：
+
+```
+<https://www.hostloc.com/thread-494384-1-1.html>
+```
+
 
 稍作修改。
 
@@ -21,14 +26,22 @@ web位于服务端
 
 1.使用命令下载脚本：
 
+```
 wget https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/status.sh && chmod +x status.sh
+```
 下载脚本后，根据需要安装客户端或者服务端：
 
  客户端管理菜单
+ 
+ ```
 bash status.sh c
+```
  
  服务端管理菜单
+ 
+ ```
 bash status.sh s
+```
 
 ## 修改方法
 
