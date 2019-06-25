@@ -6,7 +6,7 @@ export PATH
 #	System Required: CentOS/Debian/Ubuntu
 #	Description: ServerStatus client + server
 #	Version: Test v0.004
-#	Author: Toyo,Modify by CokeMine
+#	Author: CokeMine,Modify by mubaizi
 #=================================================
 
 sh_ver="0.0.1"
@@ -64,7 +64,7 @@ check_pid_client(){
 }
 Download_Server_Status_server(){
 	cd "/tmp"
-	wget -N --no-check-certificate "https://github.com/CokeMine/ServerStatus-Hotaru/archive/master.zip"
+	wget -N --no-check-certificate "https://github.com/lbq1121/ServerStatus-Hotaru/archive/master.zip"
 	[[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 服务端下载失败 !" && exit 1
 	unzip master.zip
 	rm -rf master.zip
