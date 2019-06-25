@@ -13,9 +13,22 @@ Test v0.014：图片来源：Pixiv：72725286
 
 多了个Region调用国旗。所以用原来Toyo版的需要稍作修改
 
-## 安装方法
+web位于服务端
 
-请见：https://www.cokemine.com/serverstatus-hotaru.html
+## 安装方法
+#安装
+系统要求：CentOS 7、Debian 7+、Ubuntu 14.04 +
+
+1.使用命令下载脚本：
+
+wget https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/status.sh && chmod +x status.sh
+下载脚本后，根据需要安装客户端或者服务端：
+
+ 客户端管理菜单
+bash status.sh c
+ 
+ 服务端管理菜单
+bash status.sh s
 
 ## 修改方法
 
@@ -24,6 +37,7 @@ Test v0.014：图片来源：Pixiv：72725286
 ![](https://i.loli.net/2019/02/07/5c5bca12df8b0.png)
 
 卸载ServerStatus-Toyo安装ServerStatus-Hotaru替换配置文件，重启ServerStatus
+
 
 ## 效果演示
 
