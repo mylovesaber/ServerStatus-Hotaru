@@ -7,7 +7,8 @@ Test v0.014：图片来源：Pixiv：72725286
 
 ## 特性
 
-``` caddy提供基础web功能非nginx
+``` 
+	caddy提供基础web功能非nginx
 ```
 
 多了个Region调用国旗。所以用原来Toyo版的需要稍作修改
