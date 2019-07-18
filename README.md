@@ -9,10 +9,6 @@ Test v0.014：图片来源：Pixiv：72725286
 
 模板来自：
 
-```
-<https://www.hostloc.com/thread-494384-1-1.html>
-```
-
 
 稍作修改。
 
@@ -46,6 +42,9 @@ bash status.sh s
 ## 修改方法
 
 配置文件：/usr/local/ServerStatus/server/config.json备份并自行添加Region
+网络实时流量单位为：G=GB/s，M=MB/s，K=KB/s
+服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
+如果要修改网页标题或者网页顶部公告内容，打开/usr/local/ServerStatus/web/index.html
 
 ![](https://i.loli.net/2019/02/07/5c5bca12df8b0.png)
 
@@ -61,7 +60,9 @@ bash status.sh s
 当然前端可以自己自定义。
 
 ## 相关开源项目 ： 
-* ServerStatus-Toyo：https://github.com/ToyoDAdoubiBackup/ServerStatus-Toyo
+* 原始脚本：https://github.com/ToyoDAdoubi/ServerStatus-Toyo
+* 修改脚本：https://github.com/CokeMine/ServerStatus-Hotaru
+* 模板来源：https://www.hostloc.com/thread-494384-1-1.html
 * ServerStatus：https://github.com/BotoX/ServerStatus
 * mojeda: https://github.com/mojeda 
 * mojeda's ServerStatus: https://github.com/mojeda/ServerStatus
