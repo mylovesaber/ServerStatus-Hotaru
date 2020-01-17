@@ -27,7 +27,7 @@ https://github.com/mylovesaber/ServerStatus-Hotaru/tree/master/web/img/clients
 
 #### 使用命令下载脚本：
 ```bash
-wget https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/status.sh -P /root && chmod +x /root/status.sh
+wget https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/status.sh -P /root && chmod +x /root/status.sh && cd /root
 ```
 
 #### 安装服务端：
