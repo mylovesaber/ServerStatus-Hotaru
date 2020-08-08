@@ -5,8 +5,8 @@ export PATH
 #=================================================
 #	System Required: CentOS/Debian/Ubuntu
 #	Description: ServerStatus client + server
-#	Version: Test v0.005
-#	Author: CokeMine,Modify by mubaizi
+#	Version: Test v0.008
+#	Author: CokeMine,Modify by saberlion
 #=================================================
 
 sh_ver="0.0.1"
@@ -99,7 +99,7 @@ Download_Server_Status_server(){
 }
 Download_Server_Status_client(){
 	cd "/tmp"
-	wget -N --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/clients/status-client.py"
+	wget -N --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/clients/status-client.py"
 	[[ ! -e "status-client.py" ]] && echo -e "${Error} ServerStatus 客户端下载失败 !" && exit 1
 	cd "${file_1}"
 	[[ ! -e "${file}" ]] && mkdir "${file}"
@@ -126,14 +126,14 @@ Download_Server_Status_client(){
 }
 Service_Server_Status_server(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/service/server_status_server_centos" -O /etc/init.d/status-server; then
+		if ! wget --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/service/server_status_server_centos" -O /etc/init.d/status-server; then
 			echo -e "${Error} ServerStatus 服务端服务管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/status-server
 		chkconfig --add status-server
 		chkconfig status-server on
 	else
-		if ! wget --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/service/server_status_server_debian" -O /etc/init.d/status-server; then
+		if ! wget --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/service/server_status_server_debian" -O /etc/init.d/status-server; then
 			echo -e "${Error} ServerStatus 服务端服务管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/status-server
@@ -143,14 +143,14 @@ Service_Server_Status_server(){
 }
 Service_Server_Status_client(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/service/server_status_client_centos" -O /etc/init.d/status-client; then
+		if ! wget --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/service/server_status_client_centos" -O /etc/init.d/status-client; then
 			echo -e "${Error} ServerStatus 客户端服务管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/status-client
 		chkconfig --add status-client
 		chkconfig status-client on
 	else
-		if ! wget --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/service/server_status_client_debian" -O /etc/init.d/status-client; then
+		if ! wget --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/service/server_status_client_debian" -O /etc/init.d/status-client; then
 			echo -e "${Error} ServerStatus 客户端服务管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/status-client
@@ -615,7 +615,7 @@ Modify_ServerStatus_server_all(){
 		Set_location_num_a_text=$(sed -n "${Set_location_num_a}p" ${server_conf}|sed 's/\"//g;s/,$//g'|awk -F ": " '{print $2}')
 		sed -i "${Set_location_num_a}"'s/"location": "'"${Set_location_num_a_text}"'"/"location": "'"${location_s}"'"/g' ${server_conf}
 		Set_region_num_a=$(echo $((${Set_username_num}+7)))
-		Set_region_num_a_text=$(sed -n "${Set_lregion_num_a}p" ${server_conf}|sed 's/\"//g;s/,$//g'|awk -F ": " '{print $2}')
+		Set_region_num_a_text=$(sed -n "${Set_region_num_a}p" ${server_conf}|sed 's/\"//g;s/,$//g'|awk -F ": " '{print $2}')
 		sed -i "${Set_region_num_a}"'s/"region": "'"${Set_region_num_a_text}"'"/"region": "'"${region_s}"'"/g' ${server_conf}
 		echo -e "${Info} 修改成功。"
 	else
@@ -680,7 +680,7 @@ Install_caddy(){
 		Set_server "server"
 		Set_server_http_port
 		if [[ ! -e "/usr/local/caddy/caddy" ]]; then
-			wget -N --no-check-certificate https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/caddy/caddy_install.sh
+			wget -N --no-check-certificate https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/caddy/caddy_install.sh
 			chmod +x caddy_install.sh
 			bash caddy_install.sh install
 			rm -rf caddy_install.sh
@@ -691,9 +691,9 @@ Install_caddy(){
 		if [[ ! -s "/usr/local/caddy/Caddyfile" ]]; then
 			cat > "/usr/local/caddy/Caddyfile"<<-EOF
 http://${server_s}:${server_http_port_s} {
- root ${web_file}
- timeouts none
- gzip
+ root * ${web_file}
+ encode gzip
+ file_server
 }
 EOF
 			/etc/init.d/caddy restart
@@ -701,9 +701,9 @@ EOF
 			echo -e "${Info} 发现 Caddy 配置文件非空，开始追加 ServerStatus 网站配置内容到文件最后..."
 			cat >> "/usr/local/caddy/Caddyfile"<<-EOF
 http://${server_s}:${server_http_port_s} {
- root ${web_file}
- timeouts none
- gzip
+ root * ${web_file}
+ encode gzip
+ file_server
 }
 EOF
 			/etc/init.d/caddy restart
@@ -844,7 +844,7 @@ Uninstall_ServerStatus_server(){
 		rm -rf "/etc/init.d/status-server"
 		if [[ -e "/etc/init.d/caddy" ]]; then
 			/etc/init.d/caddy stop
-			wget -N --no-check-certificate https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/caddy/caddy_install.sh
+			wget -N --no-check-certificate https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/caddy/caddy_install.sh
 			chmod +x caddy_install.sh
 			bash caddy_install.sh uninstall
 			rm -rf caddy_install.sh
@@ -966,7 +966,7 @@ Set_iptables(){
 	fi
 }
 Update_Shell(){
-	sh_new_ver=$(wget --no-check-certificate -qO- -t1 -T3 "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/status.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1) && sh_new_type="github"
+	sh_new_ver=$(wget --no-check-certificate -qO- -t1 -T3 "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/status.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1) && sh_new_type="github"
 	[[ -z ${sh_new_ver} ]] && echo -e "${Error} 无法链接到 Github !" && exit 0
 	if [[ -e "/etc/init.d/status-client" ]]; then
 		rm -rf /etc/init.d/status-client
@@ -976,13 +976,13 @@ Update_Shell(){
 		rm -rf /etc/init.d/status-server
 		Service_Server_Status_server
 	fi
-	wget -N --no-check-certificate "https://raw.githubusercontent.com/lbq1121/ServerStatus-Hotaru/master/status.sh" && chmod +x status.sh
+	wget -N --no-check-certificate "https://raw.githubusercontent.com/mylovesaber/ServerStatus-Hotaru/master/status.sh" && chmod +x status.sh
 	echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !(注意：因为更新方式为直接覆盖当前运行的脚本，所以可能下面会提示一些报错，无视即可)" && exit 0
 }
 menu_client(){
 echo && echo -e "  ServerStatus 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- Toyo | doub.io/shell-jc3 --
-  --    Modify by mubaizi    --
+  --    Modify by saberlion    --
  ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
  ————————————
  ${Green_font_prefix} 1.${Font_color_suffix} 安装 客户端
@@ -1061,7 +1061,7 @@ esac
 menu_server(){
 echo && echo -e "  ServerStatus 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- Toyo | doub.io/shell-jc3 --
-  --    Modify by lbq1121    --
+  --    Modify by mylovesaber    --
  ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
  ————————————
  ${Green_font_prefix} 1.${Font_color_suffix} 安装 服务端
