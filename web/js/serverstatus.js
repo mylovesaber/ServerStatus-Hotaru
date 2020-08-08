@@ -83,7 +83,7 @@ function uptime() {
                          '   </div>'+
                           '  <div class="location-progress">'+
                           '      <div class="progress progress-sm">'+
-                             '       <div class="progress-bar" style="width: @load%;"></div>'+
+                             '       <div class="progress-bar" style="width: @Mem%;"></div>'+
                              '   </div>'+
                           '  </div>'+
                            ' <ul class="location-info list-styled">'+
@@ -103,6 +103,9 @@ function uptime() {
 		for (var i = 0; i < result.servers.length; i++) {
           
           //----kaishi
+		  
+          // Memory
+		  var Mem = ((result.servers[i].memory_used/result.servers[i].memory_total)*100.0).toFixed(0);
           
           // Network
 				var newnetstr = "";
@@ -120,13 +123,9 @@ function uptime() {
 				else
 					newnetstr += (result.servers[i].network_tx/1000/1000).toFixed(1) + "M";
           
-          shinnerhtml+=shstr.replace("@name",result.servers[i].name).replace("@network_rxandnetwork_tx",newnetstr).replace("@type",result.servers[i].type).replace("@online",result.servers[i].online4?'text-success':'text-error').replace("@location",result.servers[i].location).replace("@load",result.servers[i].load).replace("@load",result.servers[i].load).replace("@region",result.servers[i].region);
-          
-          
+					shinnerhtml+=shstr.replace("@name",result.servers[i].name).replace("@network_rxandnetwork_tx",newnetstr).replace("@type",result.servers[i].type).replace("@online",result.servers[i].online4?'text-success':'text-error').replace("@location",result.servers[i].location).replace("@Mem",Mem).replace("@load",result.servers[i].load).replace("@region",result.servers[i].region);
           
           //----jieshu
-          
-          
           
 			var TableRow = $("#servers tr#r" + i);
 			var ExpandRow = $("#servers #rt" + i);
@@ -286,7 +285,7 @@ function uptime() {
 				TableRow.children["cpu"].children[0].children[0].innerHTML = result.servers[i].cpu + "%";
 
 				// Memory
-				var Mem = ((result.servers[i].memory_used/result.servers[i].memory_total)*100.0).toFixed(0);
+				//var Mem = ((result.servers[i].memory_used/result.servers[i].memory_total)*100.0).toFixed(0);
 				if (Mem >= 90)
 					TableRow.children["memory"].children[0].children[0].className = "progress-bar progress-bar-danger";
 				else if (Mem >= 80)

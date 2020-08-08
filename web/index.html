@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--    <title>探针</title> -->
+    <title>回忆的探针</title>
 
 
     <!-- Fix chrome language detection -->
@@ -12,41 +12,21 @@
     <meta http-equiv="Content-Language" content="zh" />
 
     <!-- Styles -->
-    <link href="css/core.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/panel.css" rel="stylesheet">
-    <link href="css/global.css" rel="stylesheet">
-    <link href="css/suit.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-
-    <style>
-        @font-face {
-            font-family: 'icons';
-            src: url('fonts/icons/icons.eot');
-            src: url('fonts/icons/icons.eot') format('embedded-opentype'), url('fonts/icons/icons.ttf') format('truetype'), url('fonts/icons/icons.woff') format('woff'), url('fonts/icons/icons.svg') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-        th {text-align:center;}
-    </style>
-
-    <!--[if lt IE 9]>
-    <script src="/js/selectivizr-min.js"></script>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
+    <link rel="stylesheet" href="css/core.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/hotaru_fix.css" type="text/css">
+    <link rel="stylesheet" href="css/darkmode.css" type="text/css">
 </head>
 
 <body>
         <section id="content" style="text-align: center;">
                 <!-- Content Row -->
-                <section class="background">
+                <section class="hotaru-cover">
                     <div class="container">
                         <header>
                             <h1>
                                 <span style="visibility:hidden;">占位</span>
-				<!--<strong>探针</strong>-->
+				                <!--<strong>探针</strong>-->
                                 <!--不能忍受背景图片被文字阻挡，宁可隐藏文字，想用文字时可取消注释并注释掉占位一行-->
                             </h1>
                         </header>
@@ -96,7 +76,7 @@
 
         <div class="page-section">
             <div class="container">
-                <div id='cards' class="row">
+                <div id="cards" class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="panel panel-block panel-block-sm panel-location">
                             <div class="location-header">
@@ -117,13 +97,13 @@
                 </div>
             </div>
         </div>
-
-
+    <!--Darkmode-->
+    <!--<button class="darkmode" onclick="switchDarkMode()"></button>-->
     <!-- Scripts -->
-
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/serverstatus.js"></script>
+    <script src="js/serverstatus.js"></script>
+    <script src="js/darkmode.js"></script>
 </body>
 
 <!--
