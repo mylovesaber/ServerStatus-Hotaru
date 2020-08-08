@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>可乐探针</title>
+    <title>回忆的探针</title>
 
 
     <!-- Fix chrome language detection -->
@@ -26,12 +26,14 @@
             <div class="container">
                 <header>
                     <h1>
-                        <strong>APTX探针</strong>
+                        <!--<strong>APTX探针</strong>-->
+                        <!--不能忍受背景图片被文字阻挡，宁可隐藏文字，想用文字时可取消注释并注释掉占位一行-->
                     </h1>
                 </header>
                 <div>
                     <p>
-                        <small>狀態更新和事件報告可能會延遲最多30分鐘<br />具體取決於手頭的技術問題。請向下滾動查看過去的事件報告.</small>
+                        <span style="visibility:hidden;">占位<br />占位</span>
+				        <!--<small>狀態更新和事件報告可能會延遲最多30分鐘<br />具體取決於手頭的技術問題。請向下滾動查看過去的事件報告.</small>-->
                     </p>
                 </div>
             </div>
@@ -43,7 +45,7 @@
                 <div class="progress-bar progress-bar-warning" style="width: 100%;">加载中...</div>
             </div>
             <div style="text-align:center;">
-                如果出現此消息，請確保您已啟用Javascript！ <br />否則雲監控主服務（服務端）未啟動或已關閉.
+                如果出现此消息，请确保您已启用Javascript！ <br />否则云监控主服务（服务端）未启动或已关闭。
             </div>
         </div>
 
@@ -96,17 +98,17 @@
         </div>
     </div>
     <!--Darkmode-->
-    <!--<button class="darkmode" onclick="switchDarkMode()"></button>-->
+    <button class="darkmode" onclick="switchDarkMode()"></button>
     <!-- Scripts -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/serverstatus.js"></script>
     <script src="js/darkmode.js"></script>
 </body>
-
+<!--
 <footer>
     <p style="text-align:center;">Powered by <a
             href="https://github.com/CokeMine/ServerStatus-Hotaru">ServerStatus-Hotaru</a></p>
 </footer>
-
+-->
 </html>
