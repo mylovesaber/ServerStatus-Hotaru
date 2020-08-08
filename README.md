@@ -7,6 +7,7 @@ Test v0.022：头图来源：Pixiv：72725286
 
 为了通用性做了适当修改，感谢CokeMine
 
+
 ## 特性
 
 模板来自：<https://www.hostloc.com/thread-494384-1-1.html>
@@ -26,6 +27,7 @@ https://github.com/mylovesaber/ServerStatus-Hotaru/tree/master/web/img/clients
 ## 安装方法
 
 请见：https://www.cokemine.com/serverstatus-hotaru.html
+
 `系统要求：CentOS 7、Debian 7+、Ubuntu 14.04+、debian9+`
 
 #### 使用命令下载脚本：
