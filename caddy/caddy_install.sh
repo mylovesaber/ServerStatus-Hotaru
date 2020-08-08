@@ -45,7 +45,7 @@ Download_caddy(){
 	[[ -e "caddy*" ]] && rm -rf "caddy*"
 	if [[ ${bit} == "x86_64" ]]; then
 		wget --no-check-certificate -O "caddy" "https://github.com/CokeMine/Caddy_Linux/releases/latest/download/caddy_v2_linux_amd64"
-	elif [[ ${bit} == "i386" || ${bit} == "i686" ]]; then
+	 elif [[ ${bit} == "i386" || ${bit} == "i686" ]]; then
 		 wget --no-check-certificate -O "caddy" "https://github.com/CokeMine/Caddy_Linux/releases/latest/download/caddy_v2_linux_i386" 
 	elif [[ ${bit} == "armv7l" ]]; then
 		wget --no-check-certificate -O "caddy" "https://github.com/CokeMine/Caddy_Linux/releases/latest/download/caddy_v2_linux_arm7"

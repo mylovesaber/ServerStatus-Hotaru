@@ -1,10 +1,10 @@
 ﻿# -*- coding: utf-8 -*-
 # Support Python Version 2.7 to 3.7
-# Update by: https://github.com/mylovesaber/ServerStatus-Hotaru
+# Update by: https://github.com/CokeMine/ServerStatus-Hotaru
 
 SERVER = "127.0.0.1"
 PORT = PORT
-USER = "USER" 
+USER = "USER"
 PASSWORD = "USER_PASSWORD"
 INTERVAL = 1 #更新间隔，单位：秒
 
